@@ -1,0 +1,13 @@
+Архитектура GreenScan (кратко для записки)
+
+1) Локальная БД SQLite (Room), файл из assets: database/products.db
+   Таблицы: products, barcodes, nutrition_facts (см. src/schema.sql).
+
+2) Поток поиска по штрихкоду:
+   - barcodes -> product_id -> products + nutrition_facts (Green).
+   - Параллельно HTTPS Open Food Facts API v2 (Retrofit).
+   - На экране: объединённые наименование, состав/ингредиенты, БЖУ/ккал, источники.
+
+3) Сканер: CameraX + ML Kit Barcode.
+
+ER (текстом): products 1--* barcodes; products 1--1 nutrition_facts (product_id PK).

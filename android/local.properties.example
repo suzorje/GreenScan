@@ -1,0 +1,3 @@
+# Скопируйте в local.properties и укажите путь к Android SDK.
+# В Android Studio файл создаётся автоматически при открытии проекта.
+sdk.dir=/path/to/Android/Sdk

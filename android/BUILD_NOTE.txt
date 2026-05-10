@@ -1,0 +1,5 @@
+Сборка Gradle требует полноценный JDK (javac), например OpenJDK 17 или 21.
+В Android Studio: File — Project Structure — JDK — встроенный JBR.
+В CLI: export JAVA_HOME=/path/to/jdk-17 && ./gradlew :app:assembleDebug
+
+На Fedora: dnf install java-21-openjdk-devel
