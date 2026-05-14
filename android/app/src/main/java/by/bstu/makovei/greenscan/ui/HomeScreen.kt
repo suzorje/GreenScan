@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,26 +27,32 @@ fun HomeScreen(nav: NavController) {
         Modifier
             .fillMaxSize()
             .padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Text("Введите штрихкод (EAN-13 и др.) или отсканируйте.")
+        Text("GreenScan", style = MaterialTheme.typography.headlineMedium)
+        Text(
+            "Анализ состава продуктов по штрих-коду",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+        Spacer(Modifier.height(4.dp))
+
         OutlinedTextField(
             value = code.value,
             onValueChange = { code.value = it.filter { ch -> ch.isDigit() } },
-            label = { Text("Штрихкод") },
+            label = { Text("Штрихкод (EAN-13 и др.)") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true
         )
         Button(
             onClick = {
-                if (code.value.isNotBlank()) {
-                    nav.navigate("result/${code.value}")
-                }
+                if (code.value.isNotBlank()) nav.navigate("result/${code.value}")
             },
             modifier = Modifier.fillMaxWidth(),
             enabled = code.value.length >= 8
         ) {
-            Text("Найти")
+            Text("Найти по коду")
         }
         Button(
             onClick = { nav.navigate("scan") },
@@ -51,10 +60,27 @@ fun HomeScreen(nav: NavController) {
         ) {
             Text("Сканировать камерой")
         }
+
+        HorizontalDivider(Modifier.padding(vertical = 4.dp))
+
+        OutlinedButton(
+            onClick = { nav.navigate("history") },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("История сканирований")
+        }
+        OutlinedButton(
+            onClick = { nav.navigate("settings") },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Настройки аллергий")
+        }
+
         Spacer(Modifier.height(8.dp))
         Text(
-            "Данные: локальная база Green + Open Food Facts (при наличии сети).",
-            style = androidx.compose.material3.MaterialTheme.typography.bodySmall
+            "Данные: локальная база Green + Open Food Facts.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }

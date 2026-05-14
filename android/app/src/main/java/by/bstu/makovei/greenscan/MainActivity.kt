@@ -11,9 +11,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import by.bstu.makovei.greenscan.ui.HistoryScreen
 import by.bstu.makovei.greenscan.ui.HomeScreen
 import by.bstu.makovei.greenscan.ui.ResultScreen
 import by.bstu.makovei.greenscan.ui.ScanScreen
+import by.bstu.makovei.greenscan.ui.SettingsScreen
 import by.bstu.makovei.greenscan.ui.theme.GreenScanTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,6 +28,8 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController = nav, startDestination = "home") {
                         composable("home") { HomeScreen(nav) }
                         composable("scan") { ScanScreen(nav) }
+                        composable("history") { HistoryScreen(nav) }
+                        composable("settings") { SettingsScreen(nav) }
                         composable(
                             route = "result/{barcode}",
                             arguments = listOf(

@@ -77,6 +77,10 @@ dependencies {
 
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
 
+    implementation("io.coil-kt:coil-compose:2.6.0")
+
+    testImplementation("junit:junit:4.13.2")
+
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }

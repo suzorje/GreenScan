@@ -9,7 +9,7 @@ class GreenScanApp : Application() {
     val database: AppDatabase by lazy {
         Room.databaseBuilder(this, AppDatabase::class.java, "greenscan.db")
             .createFromAsset("database/products.db")
-            .fallbackToDestructiveMigration()
+            .addMigrations(AppDatabase.MIGRATION_1_2)
             .build()
     }
 

@@ -19,7 +19,15 @@ data class OffProductJson(
     @SerializedName("product_name") val productName: String?,
     @SerializedName("product_name_ru") val productNameRu: String?,
     @SerializedName("generic_name") val genericName: String?,
+    @SerializedName("brands") val brands: String?,
+    @SerializedName("serving_size") val servingSize: String?,
+    @SerializedName("image_front_url") val imageFrontUrl: String?,
+    @SerializedName("image_url") val imageUrl: String?,
     @SerializedName("ingredients_text") val ingredientsText: String?,
     @SerializedName("ingredients_text_ru") val ingredientsTextRu: String?,
+    @SerializedName("allergens_tags") val allergensTags: List<String>?,
     @SerializedName("nutriments") val nutriments: JsonObject?
-)
+) {
+    fun bestImageUrl(): String? = imageFrontUrl?.takeIf { it.isNotBlank() }
+        ?: imageUrl?.takeIf { it.isNotBlank() }
+}
