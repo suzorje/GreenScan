@@ -4,6 +4,16 @@ Android-приложение (Kotlin, Jetpack Compose, CameraX, ML Kit Barcode, 
 
 В репозитории: инструменты для той же схемы БД на Python (`schema.sql`, инициализация, парсер каталога Green).
 
+
+## Ссылки для установки
+
+Android приложение:
+https://drive.google.com/file/d/1X_NmRkCN4z2IR8vskcJ43WcsxleIH7s9/view?usp=sharing
+
+Файл с БД продуктов:
+https://drive.google.com/file/d/1JtJ64lshXn7nL_JNG-g3Hz-kUEou2g0Z/view?usp=sharing
+
+
 ## Структура
 
 | Путь | Назначение |
@@ -15,6 +25,7 @@ Android-приложение (Kotlin, Jetpack Compose, CameraX, ML Kit Barcode, 
 | `src/test/` | Тесты парсера. |
 | `doc/architecture.txt` | Краткое описание потоков данных. |
 | `requirements.txt` | Зависимости Python. |
+
 
 БД для приложения: `android/app/src/main/assets/database/products.db` (см. `doc/architecture.txt`). Чтобы собрать файл заново: `database.py` → `green_parser.py` → скопировать `products.db` в этот каталог assets.
 
